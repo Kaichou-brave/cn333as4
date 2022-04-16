@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.compose.unitconverter.R
 import java.lang.NumberFormatException
 
-class MassViewModel: ViewModel() {
-    private val _unit: MutableLiveData<Int> = MutableLiveData(R.string.kilometer)
+class PressureViewModel: ViewModel() {
+    private val _unit: MutableLiveData<Int> = MutableLiveData(R.string.bar)
 
     val unit: LiveData<Int>
         get() = _unit
@@ -16,12 +16,12 @@ class MassViewModel: ViewModel() {
         _unit.value = value
     }
 
-    private val _mass: MutableLiveData<String> = MutableLiveData("")
+    private val _pressure: MutableLiveData<String> = MutableLiveData("")
 
-    val mass: LiveData<String>
-        get() = _mass
+    val pressure: LiveData<String>
+        get() = _pressure
 
-    fun getMassAsFloat(): Float = (_mass.value?: "")?.let { value ->
+    fun getPressureAsFloat(): Float = (_pressure.value?: "")?.let { value ->
         return try {
             value.toFloat()
         } catch (e: NumberFormatException) {
@@ -30,17 +30,17 @@ class MassViewModel: ViewModel() {
     }
 
 
-    fun setMass(value: String) {
-        _mass.value = value
+    fun setPressure(value: String) {
+        _pressure.value = value
     }
 
     fun convert() =
-        getMassAsFloat().let { value ->
+        getPressureAsFloat().let { value ->
             if (!value.isNaN())
-                if (_unit.value == R.string.kilometer)
-                    value * 2.2F
+                if (_unit.value == R.string.bar)
+                    value * 14.503773773F
                 else
-                    value / 2.2F
+                    value / 14.503773773F
             else
                 Float.NaN
         }

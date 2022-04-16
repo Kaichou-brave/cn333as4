@@ -13,7 +13,12 @@
     <string name="mass">Mass</string>
     <string name="kilometer">kg</string>
     <string name="pound">lb</string>
+
+    <string name="pressure">Pressure</string>
+    <string name="bar">bar</string>
+    <string name="psi">psi</string>
+
     <string name="convert">Convert</string>
-    
+
 
 </resources>
