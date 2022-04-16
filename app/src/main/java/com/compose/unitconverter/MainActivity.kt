@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.compose.unitconverter.screen.DistancesConverter
+import com.compose.unitconverter.screen.MassConverter
 import com.compose.unitconverter.screen.Screen
 import com.compose.unitconverter.screen.TemperatureConverter
 import com.compose.unitconverter.ui.theme.UnitConverterTheme
@@ -97,6 +98,9 @@ fun UnitConverterNavHost(navController: NavHostController) {
         }
         composable(Screen.screens[1].route){
             DistancesConverter()
+        }
+        composable(Screen.screens[2].route){
+            MassConverter()
         }
     }
 }

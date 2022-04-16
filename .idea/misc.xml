@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_black_scale_20.xml" value="0.108" />
+        <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_black_scale_24.xml" value="0.108" />
         <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_black_square_foot_20.xml" value="0.1" />
         <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_black_square_foot_24.xml" value="0.1" />
         <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_thermostat_24.xml" value="0.1" />
+        <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_white_scale_24.xml" value="0.108" />
         <entry key="..\:/Workspace/UnitConverter/app/src/main/res/drawable/outline_white_square_foot_24.xml" value="0.1" />
       </map>
     </option>

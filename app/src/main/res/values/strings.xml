@@ -10,6 +10,10 @@
     <string name="meter">m</string>
     <string name="mile">mi</string>
 
+    <string name="mass">Mass</string>
+    <string name="kilometer">kg</string>
+    <string name="pound">lb</string>
     <string name="convert">Convert</string>
+    
 
 </resources>

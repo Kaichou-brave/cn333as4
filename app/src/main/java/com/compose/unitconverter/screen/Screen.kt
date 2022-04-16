@@ -10,7 +10,7 @@ sealed class Screen(
     @DrawableRes val icon: Int,
 ) {
     companion object {
-        val screens = listOf(Temperature, Distances)
+        val screens = listOf(Temperature, Distances, Mass)
     }
 
     private object Temperature : Screen(
@@ -23,6 +23,12 @@ sealed class Screen(
         "distance",
         R.string.distances,
         R.drawable.outline_white_square_foot_24
+    )
+
+    private object Mass : Screen(
+        "mass",
+        R.string.mass,
+        R.drawable.outline_white_scale_24
     )
 }
 
