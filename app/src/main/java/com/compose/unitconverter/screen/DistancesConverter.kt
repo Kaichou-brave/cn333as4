@@ -18,19 +18,19 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.compose.unitconverter.R
-import com.compose.unitconverter.viewmodels.TemperatureViewModel
+import com.compose.unitconverter.viewmodels.DistancesViewModel
 
 @Composable
-fun TemperatureConverter() {
-    val viewModel: TemperatureViewModel = viewModel()
-    val strCelsius = stringResource(id = R.string.celsius)
-    val strFahrenheit = stringResource(id = R.string.fahrenheit)
-    val currentValue = viewModel.temperature.observeAsState(viewModel.temperature.value ?: "")
-    val scale = viewModel.scale.observeAsState(viewModel.scale.value ?: R.string.celsius)
+fun DistancesConverter() {
+    val viewModel: DistancesViewModel = viewModel()
+    val strMeter = stringResource(id = R.string.meter)
+    val strMile = stringResource(id = R.string.mile)
+    val currentValue = viewModel.distance.observeAsState(viewModel.distance.value ?: "")
+    val unit = viewModel.unit.observeAsState(viewModel.unit.value ?: R.string.meter)
     var result by rememberSaveable { mutableStateOf("") }
 
     val enabled by remember(currentValue.value) {
-        mutableStateOf(!viewModel.getTemperatureAsFloat().isNaN())
+        mutableStateOf(!viewModel.getDistanceAsFloat().isNaN())
     }
     val calc = {
         val temp = viewModel.convert()
@@ -38,9 +38,9 @@ fun TemperatureConverter() {
             ""
         else
             "$temp${
-                if (scale.value == R.string.celsius)
-                    strFahrenheit
-                else strCelsius
+                if (unit.value == R.string.meter)
+                    strMile
+                else strMeter
             }"
     }
     Column(
@@ -49,17 +49,17 @@ fun TemperatureConverter() {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TemperatureTextField(
-            temperature = currentValue,
+        DistanceTextField(
+            distance = currentValue,
             modifier = Modifier.padding(bottom = 16.dp),
             callback = calc,
             viewModel = viewModel
         )
-        TemperatureScaleButtonGroup(
-            selected = scale,
+        DistanceUnitButtonGroup(
+            selected = unit,
             modifier = Modifier.padding(bottom = 16.dp)
         ) { resId: Int ->
-            viewModel.setScale(resId)
+            viewModel.setUnit(resId)
         }
         Button(
             onClick = calc,
@@ -77,19 +77,19 @@ fun TemperatureConverter() {
 }
 
 @Composable
-fun TemperatureTextField(
-    temperature: State<String>,
+fun DistanceTextField(
+    distance: State<String>,
     modifier: Modifier = Modifier,
     callback: () -> Unit,
-    viewModel: TemperatureViewModel
+    viewModel: DistancesViewModel
 ) {
     TextField(
-        value = temperature.value,
+        value = distance.value,
         onValueChange = {
-            viewModel.setTemperature(it)
+            viewModel.setDistance(it)
         },
         placeholder = {
-            Text(text = "temperature")
+            Text(text = "distance")
         },
         modifier = modifier,
         keyboardActions = KeyboardActions(onAny = {
@@ -104,21 +104,21 @@ fun TemperatureTextField(
 }
 
 @Composable
-fun TemperatureScaleButtonGroup(
+fun DistanceUnitButtonGroup(
     selected: State<Int>,
     modifier: Modifier = Modifier,
     onClick: (Int) -> Unit
 ) {
     val sel = selected.value
     Row(modifier = modifier) {
-        TemperatureRadioButton(
-            selected = sel == R.string.celsius,
-            resId = R.string.celsius,
+        DistanceRadioButton(
+            selected = sel == R.string.meter,
+            resId = R.string.meter,
             onClick = onClick
         )
-        TemperatureRadioButton(
-            selected = sel == R.string.fahrenheit,
-            resId = R.string.fahrenheit,
+        DistanceRadioButton(
+            selected = sel == R.string.mile,
+            resId = R.string.mile,
             onClick = onClick,
             modifier = Modifier.padding(start = 16.dp)
         )
@@ -127,7 +127,7 @@ fun TemperatureScaleButtonGroup(
 }
 
 @Composable
-fun TemperatureRadioButton(
+fun DistanceRadioButton(
     selected: Boolean,
     resId: Int,
     onClick: (Int) -> Unit,

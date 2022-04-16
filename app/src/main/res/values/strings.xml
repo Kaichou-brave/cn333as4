@@ -10,4 +10,6 @@
     <string name="meter">m</string>
     <string name="mile">mi</string>
 
+    <string name="convert">Convert</string>
+
 </resources>
